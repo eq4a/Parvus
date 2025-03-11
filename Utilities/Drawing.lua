@@ -1389,8 +1389,10 @@ DrawingLibrary.Connection = RunService.RenderStepped:Connect(function()
     end
     for Object, ESP in pairs(DrawingLibrary.ObjectESP) do
         --DrawingLibrary.UpdateObject(ESP, Object)
-        if not GetFlag(ESP.Flags, ESP.GlobalFlag, "/Enabled")
-        or not GetFlag(ESP.Flags, ESP.Flag, "/Enabled") then
+        if GetFlag(ESP.Flags, ESP.GlobalFlag, "/Enabled") 
+        and GetFlag(ESP.Flags, ESP.Flag, "/Enabled") then
+            ESP.Name.Visible = true 
+            else 
             ESP.Name.Visible = false
             continue
         end
