@@ -76,7 +76,7 @@ local function ClearDrawing(Table)
     end
 end
 local function GetFlag(Flags, Flag, Option)
-    return Flags[Flag .. Option]
+    return Flags[Flag .. Option]   end
 end
 local function GetDistance(Position)
     return (Position - Camera.CFrame.Position).Magnitude
