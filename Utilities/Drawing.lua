@@ -76,8 +76,8 @@ local function ClearDrawing(Table)
     end
 end
 local function GetFlag(Flags, Flag, Option)
-    if not Flag or not Option then return nil end
-    return Flags[Flag .. Option]
+    if not Flags or not Flag or not Option then return nil end
+    return Flags[tostring(Flag) .. tostring(Option)]
 end
 local function GetDistance(Position)
     return (Position - Camera.CFrame.Position).Magnitude
@@ -1389,7 +1389,8 @@ DrawingLibrary.Connection = RunService.RenderStepped:Connect(function()
         DrawingLibrary.Update(ESP, Target)
     end
     for Object, ESP in pairs(DrawingLibrary.ObjectESP) do
-    if not ESP.GlobalFlag or not ESP.Flag then
+    -- Add these checks FIRST
+    if not ESP.Flags or not ESP.GlobalFlag or not ESP.Flag then
         ESP.Name.Visible = false
         continue
     end
